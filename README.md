@@ -31,7 +31,7 @@ Una boutique de moda femenina moderna y elegante construida con Angular 18.
 
 1. **Clona el repositorio**:
    ```bash
-   git clone https://github.com/Angektam/boutique-ana.git
+  https://boutique-ana-angek.netlify.app
    cd boutique-ana
    ```
 
