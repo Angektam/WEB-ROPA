@@ -11,6 +11,7 @@ try {
   // Ejecutar build de Angular
   console.log('📦 Construyendo aplicación Angular...');
   console.log('🔧 Usando Node.js v20 para Angular 20...');
+  console.log('🌐 Configurado para Netlify y GitHub Pages...');
   execSync('ng build --configuration github-pages', { stdio: 'inherit' });
   
   // Verificar que el build se completó
