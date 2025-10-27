@@ -32,6 +32,8 @@ try {
   // Copiar archivos de configuración desde la raíz
   const rootNojekyll = path.join(__dirname, '.nojekyll');
   const rootRedirects = path.join(__dirname, '_redirects');
+  const rootCNAME = path.join(__dirname, 'CNAME');
+  const root404 = path.join(__dirname, '404.html');
   
   if (fs.existsSync(rootNojekyll)) {
     fs.copyFileSync(rootNojekyll, nojekyllPath);
@@ -41,6 +43,18 @@ try {
   if (fs.existsSync(rootRedirects)) {
     fs.copyFileSync(rootRedirects, redirectsPath);
     console.log('✅ Archivo _redirects copiado desde raíz');
+  }
+  
+  if (fs.existsSync(rootCNAME)) {
+    const cnamePath = path.join(distPath, 'CNAME');
+    fs.copyFileSync(rootCNAME, cnamePath);
+    console.log('✅ Archivo CNAME copiado desde raíz');
+  }
+  
+  if (fs.existsSync(root404)) {
+    const html404Path = path.join(distPath, '404.html');
+    fs.copyFileSync(root404, html404Path);
+    console.log('✅ Archivo 404.html copiado desde raíz');
   }
   
   console.log('🎉 Build completado exitosamente!');
