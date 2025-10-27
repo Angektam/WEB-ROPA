@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Angular 20 to GitHub Pages
 
 on:
   push:
@@ -10,20 +10,21 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build Angular 20 app
         run: npm run build:pages
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
