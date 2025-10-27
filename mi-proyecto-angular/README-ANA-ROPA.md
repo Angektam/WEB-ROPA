@@ -4,7 +4,8 @@
 Boutique Ana es una aplicación web de moda femenina elegante y sofisticada, desarrollada con Angular 20. Ofrece una experiencia de compra completa con catálogo de productos, carrito de compras, lista de deseos y sistema de autenticación.
 
 ## 🚀 Demo en Vivo
-**GitHub Pages:** [https://anagektam.github.io/ANA-ROPA/](https://anagektam.github.io/ANA-ROPA/)
+**Netlify:** [https://boutique-ana-angek.netlify.app](https://boutique-ana-angek.netlify.app)
+**GitHub Pages:** [https://angektam.github.io/WEB-ROPA/](https://angektam.github.io/WEB-ROPA/)
 
 ## ✨ Características
 
@@ -122,9 +123,9 @@ src/
 
 ## 🌐 **Enlaces Útiles**
 
-- **Repositorio:** [https://github.com/Angektam/ANA-ROPA](https://github.com/Angektam/ANA-ROPA)
-- **Demo:** [https://anagektam.github.io/ANA-ROPA/](https://anagektam.github.io/ANA-ROPA/)
-- **Netlify:** [https://boutique-ana-angek.netlify.app/](https://boutique-ana-angek.netlify.app/)
+- **Repositorio:** [https://github.com/Angektam/WEB-ROPA](https://github.com/Angektam/WEB-ROPA)
+- **Demo Netlify:** [https://boutique-ana-angek.netlify.app](https://boutique-ana-angek.netlify.app)
+- **Demo GitHub Pages:** [https://angektam.github.io/WEB-ROPA/](https://angektam.github.io/WEB-ROPA/)
 
 ---
 
