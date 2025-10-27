@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:github-pages": "ng build --configuration github-pages",
+    "build:pages": "node build-script.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "db": "json-server db.json --port 3000",
