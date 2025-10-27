@@ -24,22 +24,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18'
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build Angular app
-        run: npm run build:gh-pages
-
-      - name: Create 404.html
-        run: |
-          cp dist/boutique-ana/browser/index.html dist/boutique-ana/browser/404.html
-
-      - name: Create .nojekyll
-        run: |
-          touch dist/boutique-ana/browser/.nojekyll
+      - name: Build for GitHub Pages
+        run: npm run build:github-pages
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
