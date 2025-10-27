@@ -29,6 +29,20 @@ try {
   fs.writeFileSync(redirectsPath, '/*    /index.html   200');
   console.log('✅ Archivo _redirects creado');
   
+  // Copiar archivos de configuración desde la raíz
+  const rootNojekyll = path.join(__dirname, '.nojekyll');
+  const rootRedirects = path.join(__dirname, '_redirects');
+  
+  if (fs.existsSync(rootNojekyll)) {
+    fs.copyFileSync(rootNojekyll, nojekyllPath);
+    console.log('✅ Archivo .nojekyll copiado desde raíz');
+  }
+  
+  if (fs.existsSync(rootRedirects)) {
+    fs.copyFileSync(rootRedirects, redirectsPath);
+    console.log('✅ Archivo _redirects copiado desde raíz');
+  }
+  
   console.log('🎉 Build completado exitosamente!');
   console.log(`📁 Archivos generados en: ${distPath}`);
   
