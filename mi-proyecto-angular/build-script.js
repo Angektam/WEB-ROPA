@@ -10,6 +10,7 @@ console.log('🚀 Iniciando build para GitHub Pages...');
 try {
   // Ejecutar build de Angular
   console.log('📦 Construyendo aplicación Angular...');
+  console.log('🔧 Usando Node.js v20 para Angular 20...');
   execSync('ng build --configuration github-pages', { stdio: 'inherit' });
   
   // Verificar que el build se completó
