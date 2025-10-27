@@ -36,6 +36,7 @@ try {
   const rootCNAME = path.join(__dirname, 'CNAME');
   const root404 = path.join(__dirname, '404.html');
   const rootHeaders = path.join(__dirname, '_headers');
+  const rootManifest = path.join(__dirname, 'public', 'manifest.json');
   
   if (fs.existsSync(rootNojekyll)) {
     fs.copyFileSync(rootNojekyll, nojekyllPath);
@@ -63,6 +64,12 @@ try {
     const headersPath = path.join(distPath, '_headers');
     fs.copyFileSync(rootHeaders, headersPath);
     console.log('✅ Archivo _headers copiado desde raíz');
+  }
+  
+  if (fs.existsSync(rootManifest)) {
+    const manifestPath = path.join(distPath, 'manifest.json');
+    fs.copyFileSync(rootManifest, manifestPath);
+    console.log('✅ Archivo manifest.json copiado desde public');
   }
   
   console.log('🎉 Build completado exitosamente!');
