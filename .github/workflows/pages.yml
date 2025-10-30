@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build:gh-pages
+        run: npm run build:github-pages
 
       - name: Create 404.html
         run: |
@@ -45,7 +45,7 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: './dist/boutique-ana/browser'
 
@@ -55,6 +55,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
