@@ -15,8 +15,9 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.3), transparent);
+    opacity: 0.5;
   }
 }
 
