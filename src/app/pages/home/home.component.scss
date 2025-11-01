@@ -5,7 +5,7 @@
 // Hero Section
 .hero-section {
   position: relative;
-  min-height: 80vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -17,7 +17,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--accent-color), var(--primary-light));
+  background: linear-gradient(135deg, rgba(255, 107, 157, 0.9), rgba(248, 187, 217, 0.8));
   z-index: -2;
   
   &::before {
@@ -32,13 +32,7 @@
   }
   
   &::after {
-    content: '✨💖💎';
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    font-size: 2rem;
-    animation: sparkle 3s infinite;
-    opacity: 0.6;
+    display: none;
   }
 }
 
