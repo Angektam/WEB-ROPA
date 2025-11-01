@@ -463,12 +463,13 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 3px;
     background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--primary-color));
     background-size: 200% 100%;
     transform: scaleX(0);
-    transition: transform var(--transition-base);
-    animation: shimmer 2s infinite;
+    opacity: 0;
+    transition: transform var(--transition-base), opacity var(--transition-base);
+    z-index: 1;
   }
   
   &::after {
@@ -491,6 +492,7 @@
     
     &::before {
       transform: scaleX(1);
+      opacity: 1;
     }
     
     &::after {
