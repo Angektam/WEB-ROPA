@@ -14,7 +14,7 @@ Una boutique de moda femenina moderna y elegante construida con Angular 18.
 
 ## 🚀 Demo en Vivo
 
-**GitHub Pages**: https://angektam.github.io/boutique-ana/
+**GitHub Pages**: https://angektam.github.io/WEB-ROPA
 
 **Última actualización**: 27 de octubre de 2025
 
@@ -31,7 +31,6 @@ Una boutique de moda femenina moderna y elegante construida con Angular 18.
 
 1. **Clona el repositorio**:
    ```bash
-  https://boutique-ana-angek.netlify.app
    cd boutique-ana
    ```
 
