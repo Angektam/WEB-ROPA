@@ -1,0 +1,134 @@
+<div class="product-detail-container" *ngIf="!loading && !error && product">
+  <div class="container">
+    <button type="button" class="back-btn" (click)="goBack()">
+      <i class="fas fa-arrow-left"></i>
+      Volver al catálogo
+    </button>
+
+    <div class="product-detail-content">
+      <div class="product-images">
+        <div class="main-image">
+          <img [src]="product.image" [alt]="product.name">
+          <div class="product-badges">
+            <span class="badge badge-sale" *ngIf="product.isOnSale">Oferta</span>
+            <span class="badge badge-new" *ngIf="product.isNew">Nuevo</span>
+            <span class="badge badge-stock" *ngIf="product.stock && product.stock < 5">¡Últimas unidades!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-info-detail">
+        <div class="product-header">
+          <div class="product-category">{{ product.category }}</div>
+          <h1 class="product-title">{{ product.name }}</h1>
+          <div class="product-rating">
+            <div class="stars">
+              <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]" 
+                 [class.filled]="star <= Math.floor(product.rating)"
+                 [class.half]="star === Math.ceil(product.rating) && product.rating % 1 !== 0"></i>
+            </div>
+            <span class="rating-value">{{ product.rating }}</span>
+          </div>
+        </div>
+
+        <div class="product-price-section">
+          <div class="price-container">
+            <span class="current-price">${{ product.price }}</span>
+            <span class="original-price" *ngIf="product.originalPrice">${{ product.originalPrice }}</span>
+            <span class="discount" *ngIf="product.originalPrice">
+              -{{ Math.round((1 - product.price / product.originalPrice) * 100) }}% OFF
+            </span>
+          </div>
+          <div class="stock-info" *ngIf="product.stock && product.stock > 0">
+            <i class="fas fa-check-circle"></i>
+            <span>{{ product.stock }} disponibles</span>
+          </div>
+          <div class="stock-info out-of-stock" *ngIf="product.stock !== undefined && product.stock === 0">
+            <i class="fas fa-times-circle"></i>
+            <span>Agotado</span>
+          </div>
+        </div>
+
+        <div class="product-description-section">
+          <p class="product-description">{{ product.description }}</p>
+        </div>
+
+        <div class="product-options" *ngIf="product.sizes && product.sizes.length > 0">
+          <label class="option-label">Talla:</label>
+          <div class="size-options">
+            <button 
+              type="button"
+              *ngFor="let size of product.sizes"
+              class="size-btn"
+              [class.active]="selectedSize === size"
+              (click)="selectedSize = size">
+              {{ size }}
+            </button>
+          </div>
+        </div>
+
+        <div class="product-options" *ngIf="product.colors && product.colors.length > 0">
+          <label class="option-label">Color:</label>
+          <div class="color-options">
+            <button 
+              type="button"
+              *ngFor="let color of product.colors"
+              class="color-btn"
+              [class.active]="selectedColor === color"
+              (click)="selectedColor = color">
+              {{ color }}
+            </button>
+          </div>
+        </div>
+
+        <div class="product-material" *ngIf="product.material">
+          <label class="option-label">Material:</label>
+          <span>{{ product.material }}</span>
+        </div>
+
+        <div class="product-care" *ngIf="product.care">
+          <label class="option-label">Cuidados:</label>
+          <span>{{ product.care }}</span>
+        </div>
+
+        <div class="quantity-section">
+          <label class="option-label">Cantidad:</label>
+          <div class="quantity-controls">
+            <button type="button" class="quantity-btn" (click)="decreaseQuantity()" [disabled]="quantity <= 1">
+              <i class="fas fa-minus"></i>
+            </button>
+            <span class="quantity-value">{{ quantity }}</span>
+            <button type="button" class="quantity-btn" (click)="increaseQuantity()" [disabled]="product.stock && quantity >= product.stock">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="product-actions">
+          <button type="button" class="btn btn-primary btn-large" (click)="onAddToCart()" [disabled]="product.stock === 0">
+            <i class="fas fa-shopping-bag"></i>
+            Agregar al Carrito
+          </button>
+          <button type="button" class="btn btn-outline btn-large" (click)="onAddToWishlist()">
+            <i class="fas fa-heart" [class.active]="isInWishlist()"></i>
+            {{ isInWishlist() ? 'En Lista de Deseos' : 'Agregar a Lista de Deseos' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading-container" *ngIf="loading">
+  <div class="container">
+    <p>Cargando producto...</p>
+  </div>
+</div>
+
+<div class="error-container" *ngIf="error && !loading">
+  <div class="container">
+    <p>{{ errorMessage }}</p>
+    <button type="button" class="btn btn-primary" (click)="goBack()">Volver al catálogo</button>
+  </div>
+</div>
+

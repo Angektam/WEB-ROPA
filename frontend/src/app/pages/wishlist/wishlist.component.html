@@ -1,0 +1,106 @@
+<section class="hero-section">
+  <div class="hero-background">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Tu Lista de Deseos</h1>
+        <p class="hero-subtitle">Guarda las prendas que amas para realzar tu estilo y crear el look perfecto</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wishlist-section">
+  <div class="container">
+    <div *ngIf="loading" class="loading-message">
+      <p>Cargando tu lista de deseos...</p>
+    </div>
+
+    <div *ngIf="!loading && wishlistProducts.length === 0" class="empty-wishlist">
+      <div class="empty-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <h2>Tu lista de deseos está vacía</h2>
+      <p>Explora nuestra colección de moda femenina y guarda tus prendas favoritas</p>
+      <a routerLink="/catalog" class="btn btn-primary">
+        <i class="fas fa-shopping-bag"></i>
+        Explorar Catálogo
+      </a>
+    </div>
+
+    <div *ngIf="!loading && wishlistProducts.length > 0" class="wishlist-content">
+      <div class="wishlist-header">
+        <h2 class="wishlist-title">
+          <i class="fas fa-heart"></i>
+          {{ wishlistProducts.length }} {{ wishlistProducts.length === 1 ? 'producto' : 'productos' }} en tu lista
+        </h2>
+        <button type="button" class="btn btn-outline" (click)="clearWishlist()">
+          <i class="fas fa-trash"></i>
+          Limpiar Lista
+        </button>
+      </div>
+
+      <div class="products-grid">
+        <div class="product-card" *ngFor="let product of wishlistProducts">
+          <div class="product-image" (click)="onProductClick(product)">
+            <img [src]="product.image" [alt]="product.name">
+            <div class="product-badges">
+              <span class="badge badge-sale" *ngIf="product.isOnSale">Oferta</span>
+              <span class="badge badge-new" *ngIf="product.isNew">Nuevo</span>
+              <span class="badge badge-stock" *ngIf="product.stock && product.stock < 5">¡Últimas unidades!</span>
+            </div>
+            <div class="product-actions">
+              <button type="button" class="action-btn remove-btn" (click)="removeFromWishlist(product.id); $event.stopPropagation()" title="Eliminar de lista de deseos">
+                <i class="fas fa-heart-broken"></i>
+              </button>
+              <button type="button" class="action-btn" (click)="onAddToCart(product); $event.stopPropagation()" title="Agregar al carrito">
+                <i class="fas fa-shopping-bag"></i>
+              </button>
+              <button type="button" class="action-btn" (click)="onProductClick(product); $event.stopPropagation()" title="Ver detalles">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">{{ product.category }}</div>
+            <h3 class="product-name" (click)="onProductClick(product)">{{ product.name }}</h3>
+            <p class="product-description">{{ product.description }}</p>
+            <div class="product-material" *ngIf="product.material">
+              <i class="fas fa-tag"></i>
+              <span>{{ product.material }}</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">${{ product.price }}</span>
+              <span class="original-price" *ngIf="product.originalPrice">${{ product.originalPrice }}</span>
+              <span class="discount" *ngIf="product.originalPrice">
+                -{{ Math.round((1 - product.price / product.originalPrice) * 100) }}%
+              </span>
+            </div>
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fas fa-star" *ngFor="let star of [1,2,3,4,5]" 
+                   [class.filled]="star <= Math.floor(product.rating)"
+                   [class.half]="star === Math.ceil(product.rating) && product.rating % 1 !== 0"></i>
+              </div>
+              <span class="rating-value">{{ product.rating }}</span>
+              <span class="stock-info" *ngIf="product.stock && product.stock > 0">
+                <i class="fas fa-check-circle"></i>
+                {{ product.stock }} disponibles
+              </span>
+              <span class="stock-info out-of-stock" *ngIf="product.stock !== undefined && product.stock === 0">
+                <i class="fas fa-times-circle"></i>
+                Agotado
+              </span>
+            </div>
+            <div class="product-actions-bottom">
+              <button type="button" class="btn btn-primary btn-full" (click)="onAddToCart(product)">
+                <i class="fas fa-shopping-bag"></i>
+                Agregar al Carrito
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

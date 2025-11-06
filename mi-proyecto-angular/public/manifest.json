@@ -1,0 +1,16 @@
+{
+  "name": "Boutique Ana - Moda Femenina Elegante",
+  "short_name": "Boutique Ana",
+  "description": "Tu estilo, tu elegancia, tu confianza. Moda femenina elegante y sofisticada para la mujer moderna.",
+  "start_url": "/WEB-ROPA/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e91e63",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

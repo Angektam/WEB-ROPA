@@ -1,0 +1,16 @@
+[build]
+  publish = "dist/boutique-ana/browser"
+  command = "npm run build:github-pages"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[dev]
+  command = "npm run dev"
+  port = 4200
+  publish = "dist/boutique-ana/browser"
