@@ -1,105 +1,113 @@
-# Boutique Ana - E-commerce de Moda Femenina
+¡Hola\! 👚 Este es un excelente punto de partida para tu proyecto de e-commerce "Boutique Ana". He **mejorado y enriquecido la documentación** enfocándola más en una tienda de moda femenina, destacando las características clave y utilizando un lenguaje más atractivo para este nicho.
 
-Proyecto separado en backend y frontend para una tienda de moda femenina.
+-----
 
-## Estructura del Proyecto
+## 🛍️ Boutique Ana - E-commerce de Moda Femenina
+
+Proyecto de tienda virtual especializado en **ropa, accesorios y calzado para mujer**. Implementado con una arquitectura desacoplada (backend y frontend separados) para facilitar el desarrollo y escalabilidad.
+
+### ✨ Características Destacadas
+
+  * **Catálogo de Productos Completo:** Exploración de **prendas de vestir, accesorios y calzado** con detalles y fotos.
+  * **Filtros de Moda:** Posibilidad de filtrar por **categoría** (`Vestidos`, `Blusas`, `Jeans`), **productos en oferta** (Outlet) y **novedades** (Nueva Colección).
+  * **Experiencia de Compra Personalizada:** Implementación de **Carrito de Compras** y **Lista de Deseos** (ambos persistentes en el navegador).
+  * **Búsqueda Rápida:** Funcionalidad de búsqueda por nombre para encontrar la prenda perfecta.
+
+-----
+
+## 🏗️ Estructura del Proyecto
+
+El proyecto se divide en dos módulos principales: la **API de datos** (backend) y la **Aplicación Web** (frontend).
 
 ```
 boutique-ana/
-├── backend/          # API REST con json-server
-│   ├── db.json       # Base de datos JSON
-│   └── package.json  # Dependencias del backend
-├── frontend/         # Aplicación Angular
-│   ├── src/          # Código fuente
-│   └── package.json  # Dependencias del frontend
-└── package.json      # Scripts para ejecutar ambos servicios
+├── backend/          # API REST con json-server (Simulación de base de datos)
+│   ├── db.json       # Base de datos JSON (Catálogo, Categorías, etc.)
+│   └── package.json  # Dependencias del servidor de datos
+├── frontend/         # Aplicación web desarrollada en Angular
+│   ├── src/          # Código fuente (Componentes, Servicios, Rutas)
+│   └── package.json  # Dependencias de la interfaz de usuario
+└── package.json      # Scripts maestros para la gestión de todo el proyecto
 ```
 
-## Requisitos Previos
+-----
 
-- Node.js (v18 o superior)
-- npm
+## 🛠️ Requisitos e Instalación
 
-## Instalación
+### Requisitos Previos
 
-### Instalar todas las dependencias
+Asegúrate de tener instalado en tu sistema:
+
+  * **Node.js** ($\ge$ v18)
+  * **npm** (incluido con Node.js)
+
+### Instalación de Dependencias
+
+Para instalar todas las librerías necesarias en la raíz, backend y frontend:
 
 ```bash
 npm run install:all
 ```
 
-O instalar manualmente:
+> 📌 **Opcional:** Si prefieres la instalación manual, sigue los pasos originales:
+>
+> 1.  `npm install` (Raíz)
+> 2.  `cd backend && npm install`
+> 3.  `cd ../frontend && npm install`
 
-```bash
-# Instalar dependencias del proyecto raíz
-npm install
+-----
 
-# Instalar dependencias del backend
-cd backend
-npm install
+## ▶️ Ejecución del Proyecto
 
-# Instalar dependencias del frontend
-cd ../frontend
-npm install
-```
+### Desarrollo (Simultáneo)
 
-## Ejecución
-
-### Desarrollo (ambos servicios)
+El comando ideal para trabajar en el proyecto, ejecutando ambos servicios con **recarga automática** (watch mode):
 
 ```bash
 npm run dev
 ```
 
-Esto ejecutará:
-- Backend en `http://localhost:3000`
-- Frontend en `http://localhost:4200`
+| Servicio | Tecnología | URL de Acceso |
+| :--- | :--- | :--- |
+| **Backend** (API) | `json-server` | `http://localhost:3000` |
+| **Frontend** (App) | `Angular Dev Server` | `http://localhost:4200` |
 
-### Ejecutar servicios por separado
+### Ejecución de Servicios por Separado
 
-**Backend:**
-```bash
-npm run backend:dev
-# o
-cd backend
-npm run dev
-```
+| Servicio | Comando | Alias | Descripción |
+| :--- | :--- | :--- | :--- |
+| **Backend** (Dev) | `npm run backend:dev` | `cd backend; npm run dev` | API en modo desarrollo (con *hot-reload*). |
+| **Frontend** (Dev) | `npm run frontend` | `cd frontend; npm start` | Aplicación Angular con servidor de desarrollo. |
+| **Producción** | `npm run start` | - | Ejecuta ambos servicios listos para un entorno de producción (sin watch). |
 
-**Frontend:**
-```bash
-npm run frontend
-# o
-cd frontend
-npm start
-```
+-----
 
-## API Backend
+## 📡 API del Backend (Catálogo de Moda)
 
-El backend utiliza json-server y expone los siguientes endpoints:
+El servidor simula una base de datos de productos de moda, crucial para el catálogo del frontend.
 
-- `GET /products` - Obtener todos los productos
-- `GET /products/:id` - Obtener un producto por ID
-- `GET /products?category=:category` - Filtrar por categoría
-- `GET /products?isOnSale=true` - Productos en oferta
-- `GET /products?isNew=true` - Productos nuevos
-- `GET /products?name_like=:query` - Buscar productos
-- `GET /categories` - Obtener todas las categorías
+| Endpoint | Descripción | Ejemplo de Uso |
+| :--- | :--- | :--- |
+| `GET /products` | Obtener el **catálogo completo** de prendas. | |
+| `GET /products/:id` | Consultar los **detalles** de un producto específico. | `/products/5` (Un vestido) |
+| `GET /categories` | Listado de todas las **categorías** (e.g., Vestidos, Blusas). | |
+| `GET /products?category=:cat` | **Filtrar por categoría** de ropa. | `/products?category=Vestidos` |
+| `GET /products?isOnSale=true` | Ver todas las prendas en **Oferta** (Outlet). | |
+| `GET /products?isNew=true` | Explorar la **Nueva Colección** (Novedades). | |
+| `GET /products?name_like=:query` | **Buscar** prendas por nombre o descripción. | `/products?name_like=verano` |
 
-## Frontend
+-----
 
-La aplicación Angular consume la API del backend y muestra:
-- Catálogo de productos
-- Productos destacados
-- Búsqueda de productos
-- Carrito de compras (localStorage)
-- Lista de deseos (localStorage)
+## 💖 Frontend (Aplicación Angular)
 
-## Scripts Disponibles
+La interfaz de usuario construida con Angular es la vitrina de la tienda, interactuando con la API para gestionar la experiencia de compra.
 
-- `npm run install:all` - Instala todas las dependencias
-- `npm run dev` - Ejecuta backend y frontend en modo desarrollo
-- `npm run start` - Ejecuta backend y frontend en modo producción
-- `npm run backend` - Solo backend
-- `npm run backend:dev` - Backend en modo desarrollo (con watch)
-- `npm run frontend` - Solo frontend
-- `npm run frontend:build` - Construir frontend para producción
+  * **Rutas Principales:**
+      * `/`: Página de inicio con **Productos Destacados** y **Novedades**.
+      * `/catalogo`: Navegación y filtros del catálogo de ropa.
+      * `/producto/:id`: Vista de detalle con tallas, colores y descripción.
+      * `/carrito`: Revisión y gestión de los artículos a comprar.
+      * `/deseos`: Artículos guardados para futuras compras.
+  * **Almacenamiento Local:** El **Carrito de Compras** y la **Lista de Deseos** utilizan el `localStorage` del navegador para mantener la información persistente entre sesiones.
+
+-----
